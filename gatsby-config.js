@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 module.exports = {
   siteMetadata: {
     title: "audiophile-front",
@@ -33,7 +36,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://audiophileb.herokuapp.com`,
+        apiURL: process.env.GRAPHQL_URL,
         collectionTypes: [`category`, `product`],
       },
     },
