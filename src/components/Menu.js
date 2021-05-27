@@ -10,7 +10,11 @@ const Menu = ({ open, handleOpen }) => {
       <MenuCard open={open}>
         {menuData.map((link) => {
           const { id, href, title } = link;
-          return <MenuLink to={href}>{title}</MenuLink>;
+          return (
+            <MenuLink to={href} key={id} activeClassName="active">
+              {title}
+            </MenuLink>
+          );
         })}
       </MenuCard>
     </StyledMenu>
@@ -45,6 +49,10 @@ const MenuCard = styled.div`
   background-color: ${theme.colors.black.base};
   ul {
     list-style: none;
+  }
+
+  .active {
+    color: ${theme.colors.primary.base};
   }
 `;
 

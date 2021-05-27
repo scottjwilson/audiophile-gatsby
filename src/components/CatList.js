@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "gatsby";
 import { AiOutlineRight } from "react-icons/ai";
 import styled from "styled-components";
 import { theme } from "../config/theme";
 import { useStaticQuery, graphql } from "gatsby";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const CatList = () => {
   const data = useStaticQuery(graphql`

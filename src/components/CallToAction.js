@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { theme } from "../config/theme";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 
 const CallToAction = () => {
   return (

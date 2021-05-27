@@ -1,54 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { Logo } from "./Logo";
 import { theme } from "../config/theme";
-import {
-  AiOutlineShoppingCart,
-  AiOutlineMenu,
-  AiOutlineClose,
-} from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { menuData } from "../data/menuData";
 import Burger from "./Burger";
 import Menu from "./Menu";
 
-const Header = () => {
+const Header = ({ location }) => {
   const [open, setOpen] = useState(false);
+  const [navbar, setNavbar] = useState(false);
+
+  useEffect(() => {
+    if (window.location.pathname) {
+      setNavbar(window.location.pathname);
+    }
+  }, []);
+
   const handleOpen = () => {
     setOpen(!open);
-    console.log("clicked");
   };
+
   return (
-    <Nav>
-      {/* <MenuOpen onClick={handleOpen}>
-        {open ? <CloseIcon /> : <MenuIcon />}
-      </MenuOpen> */}
+    <Nav navbar={navbar}>
+      <Container>
+        <Burger open={open} handleOpen={handleOpen} />
+        <Menu open={open} handleOpen={handleOpen} />
 
-      <Burger open={open} handleOpen={handleOpen} />
-      <Menu open={open} handleOpen={handleOpen} />
-
-      <Brand to="/">
-        <Logo />
-      </Brand>
-      <NavMenu>
-        {menuData.map((link) => {
-          const { id, href, title } = link;
-          return (
-            <NavLink id={id} to={href}>
-              {title}
-            </NavLink>
-          );
-        })}
-      </NavMenu>
-      <CartIcon />
+        <Brand to="/">
+          <Logo />
+        </Brand>
+        <NavMenu>
+          {menuData.map((link) => {
+            const { id, href, title } = link;
+            return (
+              <NavLink id={id} to={href} activeClassName="active">
+                {title}
+              </NavLink>
+            );
+          })}
+        </NavMenu>
+        <CartIcon />
+      </Container>
     </Nav>
   );
 };
 
 const Nav = styled.nav`
-  background: transparent;
-  ${theme.maxWidth.sixx};
+  background: ${({ navbar }) =>
+    navbar !== "/" ? `${theme.colors.primary.dark}` : "transparent"};
   /* background: ${theme.colors.black.base}; */
+`;
+const Container = styled.div`
+  ${theme.maxWidth.sixx};
   height: 80px;
   display: flex;
   justify-content: space-around;
@@ -64,7 +69,6 @@ const Nav = styled.nav`
     padding: 0;
   }
 `;
-
 const Brand = styled(Link)`
   display: flex;
 
@@ -81,6 +85,7 @@ const Brand = styled(Link)`
 const NavLink = styled(Link)`
   display: none;
 
+  font-size: 0.9rem;
   color: ${theme.colors.gray.one};
   align-items: center;
   padding: 0 1rem;
@@ -89,6 +94,10 @@ const NavLink = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.2rem;
+  transition: all 0.2s;
+  &:hover {
+    color: ${theme.colors.primary.base};
+  }
 
   @media ${theme.devices.lg} {
     display: flex;
@@ -107,6 +116,10 @@ const NavMenu = styled.div`
   padding: 2rem; */
   position: absolute;
   width: 100%;
+
+  .active {
+    color: ${theme.colors.primary.base};
+  }
 
   @media ${theme.devices.lg} {
     position: static;
