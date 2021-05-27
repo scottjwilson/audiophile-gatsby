@@ -7,6 +7,7 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
+
     {
       resolve: "gatsby-plugin-manifest",
       options: {
@@ -22,6 +23,19 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/config/typography`,
+      },
+    },
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `https://audiophileb.herokuapp.com`,
+        collectionTypes: [`category`, `product`],
+      },
     },
   ],
 };
