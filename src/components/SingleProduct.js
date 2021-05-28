@@ -44,9 +44,12 @@ const SingleProduct = ({ product }) => {
       </FeaturesContainer>
       <Gallery>
         {product.gallery.map((g) => (
-          <GalleryImage
-            image={getImage(g.localFile.childImageSharp.gatsbyImageData)}
-          />
+          <>
+            <GatsbyImage
+              image={getImage(g.localFile.childImageSharp.gatsbyImageData)}
+              className="galleryimage"
+            />
+          </>
         ))}
       </Gallery>
     </Section>
@@ -137,17 +140,19 @@ const Gallery = styled.div`
       "b c";
   }
   gap: 1.5rem;
-`;
-const GalleryImage = styled(GatsbyImage)`
-  border-radius: 0.5rem;
-  ${GalleryImage}:nth-child(1) {
-    grid-area: a;
-  }
-  ${GalleryImage}:nth-child(2) {
-    grid-area: b;
-  }
-  ${GalleryImage}:nth-child(3) {
-    grid-area: c;
+
+  .galleryimage {
+    border-radius: 0.5rem;
+
+    &:nth-child(1) {
+      grid-area: a;
+    }
+    &:nth-child(2) {
+      grid-area: b;
+    }
+    &:nth-child(3) {
+      grid-area: c;
+    }
   }
 `;
 

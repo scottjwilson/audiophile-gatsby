@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import { theme } from "../../config/theme";
 import styled from "styled-components";
 import Layout from "../../components/Layout";
@@ -16,6 +16,8 @@ const CategoryPage = ({ data }) => {
       <PageHero title={title} />
       <Container>
         <ProductList products={products} />
+        <CatList />
+        <CallToAction />
       </Container>
     </Layout>
   );
