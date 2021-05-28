@@ -8,10 +8,10 @@ const Menu = ({ open, handleOpen }) => {
   return (
     <StyledMenu open={open} onClick={handleOpen}>
       <MenuCard open={open}>
-        {menuData.map((link) => {
-          const { id, href, title } = link;
+        {menuData.map((link, index) => {
+          const { href, title } = link;
           return (
-            <MenuLink to={href} key={id} activeClassName="active">
+            <MenuLink key={index} to={href} activeClassName="active">
               {title}
             </MenuLink>
           );

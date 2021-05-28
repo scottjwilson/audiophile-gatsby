@@ -6,7 +6,11 @@ import { StaticImage } from "gatsby-plugin-image";
 const CallToAction = () => {
   return (
     <Container>
-      <StaticImage src="../images/image-best-gear.jpg" className="image" />
+      <StaticImage
+        src="../images/image-best-gear.jpg"
+        className="image"
+        alt="bringing you the best audio gear"
+      />
 
       <TextBox>
         <h1>

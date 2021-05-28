@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { theme } from "../config/theme";
-import { Button } from "../components/Button";
 
 const SingleProduct = ({ product }) => {
   const productImage =
@@ -13,7 +12,7 @@ const SingleProduct = ({ product }) => {
     <Section>
       <Link to="/">go back</Link>
       <ProductHero>
-        <StyledImage image={getImage(productImage)} />
+        <StyledImage image={getImage(productImage)} alt="product image" />
         <BuyMe>
           <h1>{product.name}</h1>
           <p>{product.description}</p>
@@ -22,7 +21,7 @@ const SingleProduct = ({ product }) => {
 
           <button>-</button>
           <button>+</button>
-          <Button primary>add to cart</Button>
+          <AddToCart>add to cart</AddToCart>
         </BuyMe>
       </ProductHero>
       <FeaturesContainer>
@@ -32,24 +31,25 @@ const SingleProduct = ({ product }) => {
         </Features>
         <InTheBox>
           <h1>in the box</h1>
-          {product.box.map((x) => (
-            <>
+          {product.box.map((x, index) => (
+            <div key={index}>
               <p>
                 <span>{x.qty}x </span>
                 {x.name}
               </p>
-            </>
+            </div>
           ))}
         </InTheBox>
       </FeaturesContainer>
       <Gallery>
-        {product.gallery.map((g) => (
-          <>
+        {product.gallery.map((g, index) => (
+          <React.Fragment key={index}>
             <GatsbyImage
               image={getImage(g.localFile.childImageSharp.gatsbyImageData)}
               className="galleryimage"
+              alt="gallery image"
             />
-          </>
+          </React.Fragment>
         ))}
       </Gallery>
     </Section>
@@ -109,6 +109,7 @@ const BuyMe = styled.div`
     ${theme.maxWidth.lg};
   }
 `;
+const AddToCart = styled.button``;
 const InTheBox = styled.div`
   margin: 4rem 0;
   p {

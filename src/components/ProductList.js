@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { theme } from "../config/theme";
@@ -8,8 +7,8 @@ import { Button } from "../components/Button";
 const ProductList = ({ products }) => {
   return (
     <Section>
-      {products.map((product) => (
-        <article>
+      {products.map((product, index) => (
+        <article key={index}>
           <StyledImage
             image={getImage(
               product.productimage.localFile.childImageSharp.gatsbyImageData
@@ -18,9 +17,10 @@ const ProductList = ({ products }) => {
           <Text>
             <h1>{product.name}</h1>
             <p>{product.description}</p>
-            <Link to={`/products/${product.slug}`}>
-              <Button primary>see product</Button>
-            </Link>
+
+            <Button primary to={`/products/${product.slug}`}>
+              see product
+            </Button>
           </Text>
         </article>
       ))}

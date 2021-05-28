@@ -29,13 +29,14 @@ const CatList = () => {
 
   return (
     <Container>
-      {categories.map((cat) => {
+      {categories.map((cat, index) => {
         return (
-          <Card>
+          <Card key={index}>
             <ImageRelative>
               <ImageAbsolute>
                 <GatsbyImage
                   image={getImage(cat.image.localFile.childImageSharp)}
+                  alt="category image"
                 />
               </ImageAbsolute>
             </ImageRelative>
@@ -56,14 +57,14 @@ const CatList = () => {
 
 const Container = styled.section`
   ${theme.maxWidth.sixx};
-  margin: 6rem auto;
+  margin: 8rem auto 6rem auto;
 
   @media ${theme.devices.md} {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5rem;
     padding: 0 1rem;
-    margin: 12rem auto;
+    margin: 12rem auto 8rem auto;
   }
   @media ${theme.devices.lg} {
     gap: 1rem;

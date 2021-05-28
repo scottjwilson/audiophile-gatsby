@@ -34,7 +34,7 @@ const Hero = () => {
           </p>
 
           <Button
-            primary
+            primary="true"
             data-aos="flip-down"
             data-aos-delay="2000"
             data-aos-duration="2500"

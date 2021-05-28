@@ -61,7 +61,9 @@ const FeaturedProducts = () => {
         <section>
           <h1>{one.name}</h1>
           <p>{one.featuredtext}</p>
-          <Button>see product</Button>
+          <Button primary="true" to="/">
+            see product
+          </Button>
         </section>
       </OneWrapper>
       {/* SECOND PRODUCT */}
@@ -72,7 +74,7 @@ const FeaturedProducts = () => {
         >
           <TwoText>
             <h2>{two.name}</h2>
-            <OutlineButton>see product</OutlineButton>
+            <OutlineButton to="/">see product</OutlineButton>
           </TwoText>
         </BgImage>
       </TwoWrapper>
@@ -83,7 +85,7 @@ const FeaturedProducts = () => {
         />
         <ThreeText>
           <h2>{threename}</h2>
-          <OutlineButton>see product </OutlineButton>
+          <OutlineButton to="/">see product </OutlineButton>
         </ThreeText>
       </ThreeWrapper>
     </Container>

@@ -7,11 +7,12 @@ export const Button = styled(Link)`
   border-radius: 0.2rem;
   background: ${({ primary }) =>
     primary ? `${theme.colors.primary.base}` : `${theme.colors.primary.dark}`};
-  color: whitesmoke;
+
   padding: 1rem 2rem;
   color: ${theme.colors.gray.one};
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  text-decoration: none;
   border: ${({ primary }) =>
     primary ? `${theme.colors.primary.base}` : `${theme.colors.primary.dark}`};
   cursor: pointer;
@@ -28,7 +29,6 @@ export const OutlineButton = styled(Link)`
   /* padding: 0.7rem 1.7rem; */
   padding: 1rem 2rem;
 
-  font-size: 0.7rem;
   border-radius: 0.2rem;
   background: transparent;
   color: ${theme.colors.primary.dark};

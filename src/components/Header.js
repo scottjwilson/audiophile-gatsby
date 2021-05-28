@@ -7,10 +7,12 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { menuData } from "../data/menuData";
 import Burger from "./Burger";
 import Menu from "./Menu";
+import { useCart } from "react-use-cart";
 
-const Header = ({ location }) => {
+const Header = () => {
   const [open, setOpen] = useState(false);
   const [navbar, setNavbar] = useState(false);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     if (window.location.pathname) {
@@ -32,16 +34,19 @@ const Header = ({ location }) => {
           <Logo />
         </Brand>
         <NavMenu>
-          {menuData.map((link) => {
-            const { id, href, title } = link;
+          {menuData.map((link, index) => {
+            const { href, title } = link;
             return (
-              <NavLink id={id} to={href} activeClassName="active">
+              <NavLink key={index} to={href} activeClassName="active">
                 {title}
               </NavLink>
             );
           })}
         </NavMenu>
-        <CartIcon />
+        <CartContainer>
+          {totalItems}
+          <CartIcon />
+        </CartContainer>
       </Container>
     </Nav>
   );
@@ -50,7 +55,6 @@ const Header = ({ location }) => {
 const Nav = styled.nav`
   background: ${({ navbar }) =>
     navbar !== "/" ? `${theme.colors.primary.dark}` : "transparent"};
-  /* background: ${theme.colors.black.base}; */
 `;
 const Container = styled.div`
   ${theme.maxWidth.sixx};
@@ -105,15 +109,6 @@ const NavLink = styled(Link)`
 `;
 
 const NavMenu = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  position: absolute;
-  background-color: ${theme.colors.black.base};
-  color: ${theme.colors.white.base};
-  padding: 2rem; */
   position: absolute;
   width: 100%;
 
@@ -128,16 +123,10 @@ const NavMenu = styled.div`
   }
 `;
 
-// const MenuIcon = styled(AiOutlineMenu)`
-//   color: ${theme.colors.white.base};
-//   font-size: 1.8rem;
-//   transition: translateY(40px) 2s;
-// `;
-
-// const CloseIcon = styled(AiOutlineClose)`
-//   color: ${theme.colors.white.base};
-//   font-size: 1.8rem;
-// `;
+const CartContainer = styled.div`
+  display: flex;
+  color: white;
+`;
 
 const CartIcon = styled(AiOutlineShoppingCart)`
   font-size: 2rem;

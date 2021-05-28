@@ -19,10 +19,10 @@ const Footer = () => {
         </Brand>
 
         <NavMenu>
-          {menuData.map((link) => {
-            const { id, href, title } = link;
+          {menuData.map((link, index) => {
+            const { href, title } = link;
             return (
-              <NavLink id={id} to={href}>
+              <NavLink key={index} to={href}>
                 {title}
               </NavLink>
             );
