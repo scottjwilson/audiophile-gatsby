@@ -28,7 +28,7 @@ const CallToAction = () => {
 
 const Container = styled.section`
   ${theme.maxWidth.sixx};
-  margin: 12rem auto;
+  margin: 6rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;

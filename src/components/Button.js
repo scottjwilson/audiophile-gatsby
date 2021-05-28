@@ -3,8 +3,6 @@ import { Link } from "gatsby";
 import { theme } from "../config/theme";
 
 export const Button = styled(Link)`
-  font-size: 0.7rem;
-
   width: 12rem;
   border-radius: 0.2rem;
   background: ${({ primary }) =>
@@ -17,9 +15,11 @@ export const Button = styled(Link)`
   border: ${({ primary }) =>
     primary ? `${theme.colors.primary.base}` : `${theme.colors.primary.dark}`};
   cursor: pointer;
+  transition: all 0.4s ease;
+  z-index: 20;
 
-  @media ${theme.devices.md} {
-    font-size: 1rem;
+  &:hover {
+    background: ${theme.colors.primary.light};
   }
 `;
 

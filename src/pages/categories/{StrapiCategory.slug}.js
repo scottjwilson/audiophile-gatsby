@@ -42,11 +42,7 @@ export const query = graphql`
         productimage {
           localFile {
             childImageSharp {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                placeholder: BLURRED
-                aspectRatio: 1.3
-              )
+              gatsbyImageData(width: 560, placeholder: DOMINANT_COLOR)
             }
           }
         }

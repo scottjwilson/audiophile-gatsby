@@ -12,7 +12,7 @@ const BridgeTest = ({ children }) => {
           childImageSharp {
             gatsbyImageData(
               width: 2000
-              placeholder: BLURRED
+              placeholder: DOMINANT_COLOR
               formats: [AUTO, WEBP, AVIF]
               quality: 50
             )

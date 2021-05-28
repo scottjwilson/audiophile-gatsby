@@ -19,6 +19,8 @@ const Container = styled.header`
     text-transform: uppercase;
     font-weight: 600;
     padding: 4rem 0;
+    font-size: 2.5rem;
+    margin: 0;
   }
 `;
 

@@ -56,7 +56,7 @@ const Container = styled.div`
   ${theme.maxWidth.sixx};
   height: 80px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
   margin: 0 auto;

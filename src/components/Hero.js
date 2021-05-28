@@ -1,22 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import BridgeTest from "./BridgeTest";
 import { Button } from "./Button";
 import { NewProduct } from "../components/styles/headings/NewProduct";
 import { theme } from "../config/theme";
+import Aos from "aos";
+import "aos/dist/aos.css";
 const Hero = () => {
+  useEffect(() => {
+    Aos.init({});
+  }, []);
   return (
     <BridgeTest>
       <HeroContainer>
         <section>
-          <NewProduct>new product</NewProduct>
-          <h1>xx99 mark ii headphones</h1>
-          <p>
+          <NewProduct
+            data-aos="flip-down"
+            data-aos-delay="2000"
+            data-aos-duration="1000"
+          >
+            new product
+          </NewProduct>
+          <h1
+            data-aos="zoom-in-down"
+            data-aos-delay="2000"
+            data-aos-duration="1500"
+          >
+            xx99 mark ii headphones
+          </h1>
+          <p data-aos="zoom-out" data-aos-delay="2000" data-aos-duration="2000">
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
 
-          <Button primary>see product</Button>
+          <Button
+            primary
+            data-aos="flip-down"
+            data-aos-delay="2000"
+            data-aos-duration="2500"
+          >
+            see product
+          </Button>
         </section>
       </HeroContainer>
     </BridgeTest>

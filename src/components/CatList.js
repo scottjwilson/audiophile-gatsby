@@ -14,7 +14,7 @@ const CatList = () => {
           image {
             localFile {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(placeholder: TRACED_SVG)
               }
             }
           }
@@ -56,7 +56,7 @@ const CatList = () => {
 
 const Container = styled.section`
   ${theme.maxWidth.sixx};
-  margin: 10rem auto;
+  margin: 6rem auto;
 
   @media ${theme.devices.md} {
     display: grid;
