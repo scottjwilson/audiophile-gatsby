@@ -1,73 +1,107 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { theme } from "../config/theme";
-
+import { StoreContext } from "../contexts/StoreContext";
+import { Button } from "./Button";
+import { AiFillBackward } from "react-icons/ai";
 const SingleProduct = ({ product }) => {
   const productImage =
     product.productimage.localFile.childImageSharp.gatsbyImageData;
 
+  const productId = product.id;
+
+  const [qty, setQty] = useState(1);
+  const [price, setPrice] = useState(product.price);
   return (
-    <Section>
-      <Link to="/">go back</Link>
-      <ProductHero>
-        <StyledImage image={getImage(productImage)} alt="product image" />
-        <BuyMe>
-          <h1>{product.name}</h1>
-          <p>{product.description}</p>
+    <>
+      <GoBack to="/">
+        {" "}
+        <BackIcon />
+        go back
+      </GoBack>
+      <Section>
+        <ProductHero>
+          <StyledImage image={getImage(productImage)} alt="product image" />
+          <BuyMe>
+            <h1>{product.name}</h1>
+            <p>{product.description}</p>
 
-          <h3>${product.price}</h3>
+            <h3>${price * qty}</h3>
 
-          <button>-</button>
-          <button>+</button>
-          <AddToCart>add to cart</AddToCart>
-        </BuyMe>
-      </ProductHero>
-      <FeaturesContainer>
-        <Features>
-          <h1>Features</h1>
-          <p>{product.features}</p>
-        </Features>
-        <InTheBox>
-          <h1>in the box</h1>
-          {product.box.map((x, index) => (
-            <div key={index}>
-              <p>
-                <span>{x.qty}x </span>
-                {x.name}
-              </p>
-            </div>
+            <PurchaseWrapper>
+              <Quantity>
+                <button onClick={() => setQty(qty - 1)}>-</button>
+                <span>{qty}</span>
+                <button onClick={() => setQty(qty + 1)}>+</button>
+              </Quantity>
+              <Button primary="true">add to cart</Button>
+            </PurchaseWrapper>
+          </BuyMe>
+        </ProductHero>
+        <FeaturesContainer>
+          <Features>
+            <h1>Features</h1>
+            <p>{product.features}</p>
+          </Features>
+          <InTheBox>
+            <h1>in the box</h1>
+            {product.box.map((x, index) => (
+              <div key={index}>
+                <p>
+                  <span>{x.qty}x </span>
+                  {x.name}
+                </p>
+              </div>
+            ))}
+          </InTheBox>
+        </FeaturesContainer>
+        <Gallery>
+          {product.gallery.map((g, index) => (
+            <React.Fragment key={index}>
+              <GatsbyImage
+                image={getImage(g.localFile.childImageSharp.gatsbyImageData)}
+                className="galleryimage"
+                alt="gallery image"
+              />
+            </React.Fragment>
           ))}
-        </InTheBox>
-      </FeaturesContainer>
-      <Gallery>
-        {product.gallery.map((g, index) => (
-          <React.Fragment key={index}>
-            <GatsbyImage
-              image={getImage(g.localFile.childImageSharp.gatsbyImageData)}
-              className="galleryimage"
-              alt="gallery image"
-            />
-          </React.Fragment>
-        ))}
-      </Gallery>
-    </Section>
+        </Gallery>
+      </Section>
+    </>
   );
 };
 
 const Section = styled.section`
-  padding-top: 10rem 0;
-
+  margin-top: 1rem;
   h1 {
     text-transform: uppercase;
   }
-  @media ${theme.devices.md} {
-    margin-top: 4rem 0;
+`;
+
+const GoBack = styled(Link)`
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: ${theme.colors.primary.dark};
+
+  transition: all 0.2s;
+
+  &:hover {
+    color: ${theme.colors.primary.base};
   }
-  @media ${theme.devices.lg} {
-    margin-top: 6rem 0;
-  }
+`;
+
+const BackIcon = styled(AiFillBackward)`
+  color: ${theme.colors.primary.four};
+
+  font-size: 1.2rem;
 `;
 
 const ProductHero = styled.header`
@@ -109,7 +143,29 @@ const BuyMe = styled.div`
     ${theme.maxWidth.lg};
   }
 `;
-const AddToCart = styled.button``;
+const PurchaseWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+`;
+
+const Quantity = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border-radius: 0.2rem;
+  background: ${theme.colors.gray.two};
+  span {
+    font-weight: 800;
+  }
+  button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+  }
+`;
+
 const InTheBox = styled.div`
   margin: 4rem 0;
   p {

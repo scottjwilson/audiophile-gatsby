@@ -20,7 +20,8 @@ export const Button = styled(Link)`
   z-index: 20;
 
   &:hover {
-    background: ${theme.colors.primary.light};
+    background: ${({ primary }) =>
+      primary ? `${theme.colors.primary.light}` : `${theme.colors.gray.six}`};
   }
 `;
 
@@ -28,6 +29,7 @@ export const OutlineButton = styled(Link)`
   width: 12rem;
   /* padding: 0.7rem 1.7rem; */
   padding: 1rem 2rem;
+  text-decoration: none;
 
   border-radius: 0.2rem;
   background: transparent;

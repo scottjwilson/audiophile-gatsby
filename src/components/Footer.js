@@ -38,11 +38,11 @@ const Footer = () => {
         <FootersFooter>
           <p>Copyright {new Date().getFullYear()} All Rights Reserved</p>
 
-          <article>
+          <SocialLinks>
             <AiFillFacebook />
             <AiOutlineTwitter />
             <AiOutlineInstagram />
-          </article>
+          </SocialLinks>
         </FootersFooter>
       </Container>
     </FooterBg>
@@ -106,6 +106,11 @@ const NavLink = styled(Link)`
   @media ${theme.devices.md} {
     margin-right: 2rem;
   }
+
+  transition: all 0.2s;
+  &:hover {
+    color: ${theme.colors.primary.base};
+  }
 `;
 
 const FootersFooter = styled.div`
@@ -132,6 +137,25 @@ const FootersFooter = styled.div`
 
     width: 8rem;
     margin: 0 auto;
+  }
+`;
+
+const SocialLinks = styled.article`
+  display: flex;
+  justify-content: space-around;
+  color: ${theme.colors.gray.one};
+  font-size: 2rem;
+
+  width: 8rem;
+  margin: 0 auto;
+  * > {
+    transition: all 0.2s;
+
+    &:hover {
+      transition: all 0.2s;
+
+      color: ${theme.colors.primary.base};
+    }
   }
 `;
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { Logo } from "./Logo";
@@ -7,13 +7,11 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { menuData } from "../data/menuData";
 import Burger from "./Burger";
 import Menu from "./Menu";
-import { useCart } from "react-use-cart";
-
+import { StoreContext } from "../contexts/StoreContext";
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [navbar, setNavbar] = useState(false);
-  const { totalItems } = useCart();
-
+  // const { addProductToCart } = useContext(StoreContext);
   useEffect(() => {
     if (window.location.pathname) {
       setNavbar(window.location.pathname);
@@ -44,7 +42,8 @@ const Header = () => {
           })}
         </NavMenu>
         <CartContainer>
-          {totalItems}
+          {/* {cart.length == 0 ? <></> : cart.length} */}
+
           <CartIcon />
         </CartContainer>
       </Container>

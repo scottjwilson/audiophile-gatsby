@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineRight } from "react-icons/ai";
 import styled from "styled-components";
 import { theme } from "../config/theme";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const CatList = () => {
@@ -11,6 +11,7 @@ const CatList = () => {
       allStrapiCategory {
         nodes {
           name
+          slug
           image {
             localFile {
               childImageSharp {
@@ -31,7 +32,7 @@ const CatList = () => {
     <Container>
       {categories.map((cat, index) => {
         return (
-          <Card key={index}>
+          <Card key={index} to={`/categories/${cat.slug}`}>
             <ImageRelative>
               <ImageAbsolute>
                 <GatsbyImage
@@ -74,7 +75,7 @@ const Container = styled.section`
   }
 `;
 
-const Card = styled.article`
+const Card = styled(Link)`
   cursor: pointer;
   // position: relative;
   background: ${theme.colors.gray.two};
@@ -85,7 +86,15 @@ const Card = styled.article`
   border-radius: 0.7rem;
   height: 14rem;
 
+  text-decoration: none;
+  color: ${theme.colors.gray.five};
+  transition: all 0.2s;
   margin: 6rem 1rem;
+  &:hover {
+    transform: translateY(-0.5rem);
+    color: ${theme.colors.primary.base};
+  }
+
   @media ${theme.devices.md} {
     height: 12rem;
     margin: 0;

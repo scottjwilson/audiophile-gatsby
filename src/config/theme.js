@@ -20,6 +20,7 @@ export const colors = {
     three: "#c4c4c4",
     four: "#9e9e9e",
     five: "#434343",
+    six: "#313131",
   },
 
   black: {

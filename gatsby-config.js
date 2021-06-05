@@ -26,6 +26,7 @@ module.exports = {
       },
       __key: "images",
     },
+
     {
       resolve: `gatsby-plugin-typography`,
       options: {

@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import { BgImage } from "gbimage-bridge";
 import styled from "styled-components";
-
+import { theme } from "../config/theme";
 const BridgeTest = ({ children }) => {
   const { placeholderImage } = useStaticQuery(
     graphql`
@@ -34,6 +34,9 @@ const BridgeTest = ({ children }) => {
 };
 
 const StyledBgImage = styled(BgImage)`
+  ::before {
+    background: ${theme.colors.primary.dark};
+  }
   display: flex;
   width: 100%;
 

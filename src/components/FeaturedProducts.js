@@ -57,13 +57,12 @@ const FeaturedProducts = () => {
         />
         <StyledImg
           image={getImage(one.featuredimage.localFile.childImageSharp)}
+          alt={one.name}
         />
         <section>
           <h1>{one.name}</h1>
           <p>{one.featuredtext}</p>
-          <Button primary="true" to="/">
-            see product
-          </Button>
+          <Button to="/">see product</Button>
         </section>
       </OneWrapper>
       {/* SECOND PRODUCT */}
@@ -71,6 +70,7 @@ const FeaturedProducts = () => {
         <BgImage
           image={getImage(two.featuredimage.localFile.childImageSharp)}
           style={{ minHeight: 400 }}
+          alt={two.name}
         >
           <TwoText>
             <h2>{two.name}</h2>
@@ -82,6 +82,7 @@ const FeaturedProducts = () => {
       <ThreeWrapper>
         <ThreeImg
           image={getImage(three.featuredimage.localFile.childImageSharp)}
+          alt={three.name}
         />
         <ThreeText>
           <h2>{threename}</h2>

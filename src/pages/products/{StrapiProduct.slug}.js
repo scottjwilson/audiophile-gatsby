@@ -22,7 +22,7 @@ const ProductPage = ({ data }) => {
 
 const Container = styled.div`
   ${theme.maxWidth.sixx};
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 0 1rem;
   @media ${theme.devices.xl} {
     padding: 0;
