@@ -133,6 +133,7 @@ const BuyMe = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 1rem 0;
 
   @media ${theme.devices.md} {
     padding: 4rem;
@@ -152,17 +153,18 @@ const PurchaseWrapper = styled.div`
 const Quantity = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   border-radius: 0.2rem;
   background: ${theme.colors.gray.two};
   span {
     font-weight: 800;
+    padding: 0 1rem;
   }
   button {
-    width: 100%;
-
     border: none;
     background-color: transparent;
+    padding: 1rem;
   }
 `;
 

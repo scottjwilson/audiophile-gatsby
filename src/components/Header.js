@@ -77,8 +77,8 @@ const Brand = styled(Link)`
 
   color: ${theme.colors.gray.one};
   align-items: center;
+  justify-content: center;
 
-  height: 100%;
   cursor: pointer;
   text-transform: uppercase;
   text-decoration: none;
