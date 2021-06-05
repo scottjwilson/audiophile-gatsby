@@ -152,7 +152,7 @@ const PurchaseWrapper = styled.div`
 const Quantity = styled.div`
   display: flex;
   align-items: center;
-  height: 100%;
+
   border-radius: 0.2rem;
   background: ${theme.colors.gray.two};
   span {
@@ -160,7 +160,7 @@ const Quantity = styled.div`
   }
   button {
     width: 100%;
-    height: 100%;
+
     border: none;
     background-color: transparent;
   }
